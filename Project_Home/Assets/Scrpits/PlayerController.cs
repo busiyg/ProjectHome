@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour {
         Move();
         Shoot();
         Roll();
+        Shock();
     }
 
     public void Shoot() {
@@ -33,6 +34,13 @@ public class PlayerController : MonoBehaviour {
             BackIdle();
         }
     }
+
+    public void Shock() {
+        if (Input.GetKeyDown(KeyCode.E)) {
+            transform.DOShakePosition(0.5f,0.2f);
+        }
+    }
+
 
     public void BackIdle() {
         StopAllCoroutines();

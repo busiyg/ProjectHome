@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour {
 
     }
 
+    public static GameManager GetInstance() {
+        return Instance;
+    }
+
     public static void MaskFadeInAndOut(System.Action CallBack) {
         Instance.mask.DOFade(1, 0.5f).OnComplete(() => {
             Instance.mask.DOFade(0, 0.5f);

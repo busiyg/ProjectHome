@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4396609665778634}
   - component: {fileID: 114039035047092910}
   - component: {fileID: 70017813279295378}
+  - component: {fileID: 50661541862283430}
   m_Layer: 0
   m_Name: 1
   m_TagString: Boss
@@ -72,6 +73,26 @@ Transform:
   m_Father: {fileID: 4396609665778634}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!50 &50661541862283430
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1933280784273020}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!70 &70017813279295378
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
@@ -157,7 +178,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 1b02dfb76b952c54d818496d66feaa6b, type: 3}
+  m_Sprite: {fileID: 21300008, guid: 7a6e119f615e3604783864281200cc32, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
