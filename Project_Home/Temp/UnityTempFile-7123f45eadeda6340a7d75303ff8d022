@@ -196,3 +196,4 @@ Assets/Scrpits/BulletController.cs
 Assets/Scrpits/CameraController.cs
 Assets/Scrpits/GameManager.cs
 Assets/Scrpits/PlayerController.cs
+Assets/Scrpits/StoryAni.cs

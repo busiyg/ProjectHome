@@ -5,7 +5,6 @@ using DG.Tweening;
 
 public class PlayerController : MonoBehaviour {
     public float SpeedScale;
-    public bool IsJump;
     public Rigidbody2D PlayerRigidbody;
     public Direction CurrentDirection;
     public GameObject BulletPrefab;

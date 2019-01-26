@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
     public List<Sprite> BGSprites;
     public List<GameObject> Bosses;
     public Image mask;
+    public Animator StoryAni;
     private void Awake() {
         Instance = this;
     }
@@ -24,8 +25,7 @@ public class GameManager : MonoBehaviour {
             if (CallBack!=null) {
                 CallBack.Invoke();
             }    
-        });
-      
+        });  
     }
 
 	// Update is called once per frame
@@ -33,9 +33,32 @@ public class GameManager : MonoBehaviour {
 		
 	}
 
+    public void CleanTable() {
+        //CleanBoss
+        var BossList = GameObject.FindGameObjectsWithTag("Boss");
+        var ThingList = GameObject.FindGameObjectsWithTag("Thing");
+
+        if (BossList!=null&&BossList.Length>0) {
+            foreach (var obj in BossList) {
+                Destroy(obj);
+            }
+        }
+      
+        if (ThingList != null && ThingList.Length > 0) {
+            foreach (var obj in ThingList) {
+                Destroy(obj);
+            }
+        }
+
+       
+    }
+
     public static void ChangeLevel(int level) {
         MaskFadeInAndOut(() => {
+            Instance.CleanTable();
+          //  LoadBoss(level);
             SetBG(level);
+            Instance.StoryAni.Play("Null");
             LoadBoss(level);
         });
     }
@@ -56,5 +79,15 @@ public class GameManager : MonoBehaviour {
                 Instance.BGRenderer.sprite = obj;
             }
         }
+    }
+
+    public void ChangeLevelT(int n) {
+
+
+        string N ="S"+ n.ToString();
+        print(N);
+        MaskFadeInAndOut(()=> {
+            StoryAni.Play(N);
+        });
     }
 }
