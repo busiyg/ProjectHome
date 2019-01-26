@@ -49,7 +49,9 @@ public class BottleMonster : MonoBehaviour
 	    if (_bloodNum == 0)
 	    {
             gameObject.SetActive(false);
-	    }
+            GameManager.GetInstance().ChangeLevelT(2);
+
+        }
 
 	    switch (stateName)
 	    {
@@ -200,10 +202,17 @@ public class BottleMonster : MonoBehaviour
             }
         }
 
-        if (collider.name == "shitou")
+        if (collider.tag == "shitou")
         {
+
             if (stateName == "Dizzy" && !_isHurt)
+              
                 CutState("HurtCoroutine");
+        }
+
+        if (collider.tag == "Player") {
+
+            GameManager.GetInstance().GameOver();
         }
     }
 }
