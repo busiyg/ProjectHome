@@ -63,6 +63,8 @@
   <ItemGroup>
     <Compile Include="Assets\Demigiant\DOTween\Examples\Basics.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Examples\Sequences.cs" />
+    <Compile Include="Assets\Scrpits\AudioManager.cs" />
+    <Compile Include="Assets\Scrpits\BulletController.cs" />
     <Compile Include="Assets\Scrpits\CameraController.cs" />
     <Compile Include="Assets\Scrpits\GameManager.cs" />
     <Compile Include="Assets\Scrpits\PlayerController.cs" />
