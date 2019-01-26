@@ -10,13 +10,16 @@ public class GameManager : MonoBehaviour {
     public SpriteRenderer BGRenderer;
     public List<Sprite> BGSprites;
     public List<GameObject> Bosses;
+    public List<GameObject> Bullets;
     public Image mask;
     public Animator StoryAni;
+    public PlayerController Player;
+    public SpriteRenderer finishBG;
     private void Awake() {
         Instance = this;
     }
     void Start () {
-        ChangeLevel(1);
+        //ChangeLevel(1);
 
     }
 
@@ -35,7 +38,6 @@ public class GameManager : MonoBehaviour {
 	}
 
     public void CleanTable() {
-        //CleanBoss
         var BossList = GameObject.FindGameObjectsWithTag("Boss");
         var ThingList = GameObject.FindGameObjectsWithTag("Thing");
 
@@ -58,6 +60,7 @@ public class GameManager : MonoBehaviour {
         MaskFadeInAndOut(() => {
             Instance.CleanTable();
             SetBG(level);
+            ChangeBullet(level);
             Instance.StoryAni.Play("Null");
             LoadBoss(level);
         });
@@ -71,7 +74,17 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public static void ChangeBullet(int level) {
+        foreach (var obj in Instance.Bullets) {
+            if (level == int.Parse(obj.name)) {
+                Instance.Player.BulletPrefab = obj;
+            }
+        }
+    }
 
+    public void ShowdFinishBG() {
+        finishBG.DOFade(1,2);
+    }
 
     public static void SetBG(int key) {
         foreach (var obj in Instance.BGSprites) {
