@@ -10,6 +10,7 @@ using System.Collections.Generic;
 public class UbhShotCtrl : UbhMonoBehaviour
 {
     public MouthEarMonster MouthMonster;
+    private bool _isFirst = true;
 
     [Serializable]
     public class ShotInfo
@@ -107,7 +108,10 @@ public class UbhShotCtrl : UbhMonoBehaviour
             if (tmpShotInfoList[nowIndex]._ShotObj != null) {
                 tmpShotInfoList[nowIndex]._ShotObj.SetShotCtrl(this);
                 tmpShotInfoList[nowIndex]._ShotObj.Shot();
-                MouthMonster.IsShot = true;
+                //MouthMonster.IsShot = true;
+                //MouthMonster.Anim.SetTrigger("EnterFire");
+                //MouthMonster.Anim.SetBool("Mouth", true);
+                MouthMonster.Anim.SetBool("Mouth", false);
             }
 
             if (0f < tmpShotInfoList[nowIndex]._AfterDelay) {

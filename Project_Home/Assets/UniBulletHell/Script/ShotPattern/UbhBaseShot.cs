@@ -104,7 +104,8 @@ public abstract class UbhBaseShot : UbhMonoBehaviour
         }
         _Shooting = false;
 
-        MouthEarMonster.IsShot = false;
+        //MouthEarMonster.IsShot = false;
+        
     }
 
     /// <summary>
