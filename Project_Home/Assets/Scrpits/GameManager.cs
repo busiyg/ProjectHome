@@ -16,8 +16,9 @@ public class GameManager : MonoBehaviour {
         Instance = this;
     }
     void Start () {
-		
-	}
+        ChangeLevel(1);
+
+    }
 
     public static void MaskFadeInAndOut(System.Action CallBack) {
         Instance.mask.DOFade(1, 0.5f).OnComplete(() => {
@@ -56,7 +57,6 @@ public class GameManager : MonoBehaviour {
     public static void ChangeLevel(int level) {
         MaskFadeInAndOut(() => {
             Instance.CleanTable();
-          //  LoadBoss(level);
             SetBG(level);
             Instance.StoryAni.Play("Null");
             LoadBoss(level);
@@ -82,8 +82,6 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ChangeLevelT(int n) {
-
-
         string N ="S"+ n.ToString();
         print(N);
         MaskFadeInAndOut(()=> {

@@ -7,7 +7,7 @@ public class BulletController : MonoBehaviour {
     public Vector3 Dir;
 	// Use this for initialization
 	void Start () {
-		
+        Destroy(gameObject,3);
 	}
 
     public void InitBullet(Vector3 dir) {

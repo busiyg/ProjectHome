@@ -53,13 +53,13 @@ public class MouthEarMonster : MonoBehaviour
 
 	    if (Vector3.Dot(Vector3.up, new Vector3(transform.position.y - _target.position.y, transform.position.x - _target.position.x, 0)) > 0)
 	    {
-	        Debug.Log("左边");
+	      //  Debug.Log("左边");
 	        Debug.DrawRay(transform.position, transform.right * -100, Color.red);
 	        Debug.DrawRay(transform.position, Vector3.up * 100, Color.red);
         }
 	    if (Vector3.Dot(Vector3.up, new Vector3(transform.position.y - _target.position.y, transform.position.x - _target.position.x, 0)) < 0)
 	    {
-	        Debug.Log("右边");
+	       // Debug.Log("右边");
 	        Debug.DrawRay(transform.position, transform.right * 100, Color.red);
 	        Debug.DrawRay(transform.position, Vector3.up * 100, Color.red);
         }
@@ -86,12 +86,12 @@ public class MouthEarMonster : MonoBehaviour
     {
         if (Vector3.Dot(transform.up, new Vector3(transform.position.y - _target.position.y, transform.position.x - _target.position.x,  0)) > 0)
         {
-            Debug.Log("左边");
+         //   Debug.Log("左边");
             MouthMonstImg.GetComponent<SpriteRenderer>().flipX = false;
         }
         if (Vector3.Dot(transform.up, new Vector3(transform.position.y - _target.position.y, transform.position.x - _target.position.x,  0)) < 0)
         {
-            Debug.Log("右边");
+         //   Debug.Log("右边");
             MouthMonstImg.GetComponent<SpriteRenderer>().flipX = true;
         }
     
@@ -115,7 +115,7 @@ public class MouthEarMonster : MonoBehaviour
         float bulletAngle = 0;
         if (Vector3.Dot(Vector3.up, new Vector3(transform.position.y - _target.position.y, transform.position.x - _target.position.x, 0)) > 0)
         {
-            Debug.Log("左边");
+           // Debug.Log("左边");
             MouthMonstImg.GetComponent<SpriteRenderer>().flipX = false;
             angle = Mathf.Rad2Deg * Mathf.Atan((transform.position.y - _target.position.y) / (transform.position.x - _target.position.x));
 
@@ -130,7 +130,7 @@ public class MouthEarMonster : MonoBehaviour
         }
         if (Vector3.Dot(Vector3.up, new Vector3(transform.position.y - _target.position.y, transform.position.x - _target.position.x, 0)) < 0)
         {
-            Debug.Log("右边");
+           // Debug.Log("右边");
             MouthMonstImg.GetComponent<SpriteRenderer>().flipX = true;
 
             angle = Mathf.Rad2Deg * Mathf.Atan((transform.position.y - _target.position.y) / (transform.position.x - _target.position.x));

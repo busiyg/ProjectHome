@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour {
     public void Roll() {
      
         if ((Input.GetAxis("Horizontal") !=0|| Input.GetAxis("Vertical") !=0)&& Input.GetKeyDown(KeyCode.Space)) {
-            GameManager.MaskFadeInAndOut(null);
+            print("roll!!!!!!   ");
             AudioManager.PlayerAudioClip(2);
             float BeforeSpeed = SpeedScale;
             SpeedScale = SpeedScale * 3;
