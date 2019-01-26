@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour {
     public Direction CurrentDirection;
     public GameObject BulletPrefab;
     public Vector3 CurrentVector3;
+
+    public Animator HeadAni;
+    public Animator BodyAni;
     // Use this for initialization
     void Start() {
 
@@ -26,13 +29,31 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetMouseButtonDown(0)) {
             ShootDir();
             AudioManager.PlayerAudioClip(1);
-            var bullet = Instantiate(BulletPrefab, transform.position, transform.rotation);
+            var bullet = Instantiate(BulletPrefab, HeadAni.transform.position, transform.rotation);
             bullet.GetComponent<BulletController>().InitBullet(CurrentVector3);
+            BackIdle();
         }
     }
 
+    public void BackIdle() {
+        StopAllCoroutines();
+        StartCoroutine(CountDown());
+    }
+
+    public IEnumerator CountDown() {
+        yield return new WaitForSeconds(1);
+        HeadAni.Play("HeadDown");
+        BodyAni.Play("idle");
+    }
+
+    public void HeadChange() {
+
+    }
+
     public void Roll() {
+     
         if ((Input.GetAxis("Horizontal") !=0|| Input.GetAxis("Vertical") !=0)&& Input.GetKeyDown(KeyCode.Space)) {
+            GameManager.MaskFadeInAndOut(null);
             AudioManager.PlayerAudioClip(2);
             float BeforeSpeed = SpeedScale;
             SpeedScale = SpeedScale * 3;
@@ -48,26 +69,38 @@ public class PlayerController : MonoBehaviour {
         float DisY = Tar.y - transform.position.y;
 
         if (Mathf.Abs(DisX) - Mathf.Abs(DisY) > 0) {
+
             if (DisX > 0) {
                 CurrentDirection = Direction.D;
                 CurrentVector3 = Vector3.right;
+                HeadAni.Play("HeadRight");
             } else {
                 CurrentDirection = Direction.A;
                 CurrentVector3 = Vector3.left;
+                HeadAni.Play("HeadLeft");
             }
         } else {
+          
             if (DisY > 0) {
                 CurrentDirection = Direction.W;
                 CurrentVector3 = Vector3.up;
+                HeadAni.Play("HeadUp");
             } else {
                 CurrentDirection = Direction.S;
                 CurrentVector3 = Vector3.down;
+                HeadAni.Play("HeadDown");
             }
         }
     }
 
     public void Move() {
         transform.Translate(Input.GetAxis("Horizontal") * SpeedScale, Input.GetAxis("Vertical") * SpeedScale, 0);
+        if (Mathf.Abs(Input.GetAxis("Horizontal")) > Mathf.Abs(Input.GetAxis("Vertical"))) {
+            BodyAni.Play("Horizontal");
+        }
+        if (Mathf.Abs(Input.GetAxis("Horizontal")) <Mathf.Abs(Input.GetAxis("Vertical"))) {
+            BodyAni.Play("vertical");
+        }
     }
 
     public enum Direction {
