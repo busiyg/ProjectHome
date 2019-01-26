@@ -209,5 +209,10 @@ public class BottleMonster : MonoBehaviour
               
                 CutState("HurtCoroutine");
         }
+
+        if (collider.tag == "Player") {
+
+            GameManager.GetInstance().GameOver();
+        }
     }
 }

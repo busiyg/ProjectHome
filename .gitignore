@@ -1,9 +1,6 @@
 Project_Home/Library/
-Project_Home/ProjectSettings/ProjectVersion.txt
-Project_Home/Temp/UnityLockfile
-Project_Home/obj/Debug/Assembly-CSharp.csproj.CoreCompileInputs.cache
-Project_Home/.vs/Project_Home/v15/Server/sqlite3/db.lock
-Project_Home/Temp/__Backupscenes/0.backup
-Project_Home/Temp/UnityTempFile-209d1d9c14772044895a168cd1f37803
-Project_Home/Temp/UnityTempFile-d3fdc203a2b427e4bbc7b0c0a33a9529
-Project_Home/Temp/UnityTempFile-51508dedaca3d7a4a944c5479abfb6b2
+Project_Home/ProjectSettings/
+Project_Home/Temp/UnityLockfile/
+Project_Home/obj/
+Project_Home/.vs/
+Project_Home/Temp/

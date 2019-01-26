@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
     public Animator StoryAni;
     public PlayerController Player;
     public SpriteRenderer finishBG;
+    public int CurrentLevel;
     private void Awake() {
         Instance = this;
     }
@@ -62,6 +63,7 @@ public class GameManager : MonoBehaviour {
 
     public static void ChangeLevel(int level) {
         MaskFadeInAndOut(() => {
+            Instance.CurrentLevel = level;
             Instance.CleanTable();
             SetBG(level);
             ChangeBullet(level);
@@ -104,5 +106,10 @@ public class GameManager : MonoBehaviour {
         MaskFadeInAndOut(()=> {
             StoryAni.Play(N);
         });
+    }
+
+    public void GameOver() {
+        ChangeLevel(CurrentLevel);
+        print("GG");
     }
 }
