@@ -73,6 +73,8 @@ public class UbhPaintShot : UbhBaseShot
             }
         }
 
+        MouthEarMonster.Anim.SetBool("Mouth", true);
+
         FinishedShot();
     }
 

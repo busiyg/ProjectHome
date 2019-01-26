@@ -16,6 +16,7 @@ public class MouthEarMonster : MonoBehaviour
 
     private string _stateName;
     private Transform _target;
+    public Animator Anim;
 
     private float angle;
 
@@ -23,8 +24,10 @@ public class MouthEarMonster : MonoBehaviour
     void Start ()
 	{
 	    _target = GameObject.FindWithTag("Player").transform;
+	    Anim = MouthMonstImg.GetComponent<Animator>();
 
-	    CutAim();
+
+        CutAim();
 	}
 	
 	// Update is called once per frame
@@ -37,14 +40,6 @@ public class MouthEarMonster : MonoBehaviour
                 break;
             case "Shoot":
                 Shoot();
-                //if (!IsShot)
-                //{
-                    
-                //}
-                //else
-                //{
-
-                //}
                 break;
             case "Dizzy":
                 break;
@@ -76,9 +71,16 @@ public class MouthEarMonster : MonoBehaviour
         MouthMonstImg.rotation=Quaternion.identity;
         MouthMonstImg.GetComponent<SpriteRenderer>().flipX = false;
         ShotCtrl.SetActive(true);
-        //
+        Anim.SetTrigger("Idle");
         _stateName = "Shoot";
-        
+
+        StartCoroutine(ShootCoroutine());
+    }
+
+    IEnumerator ShootCoroutine()
+    {
+        yield return new WaitForSeconds(1.0f);
+        Anim.SetTrigger("EnterFire");
     }
 
     private float _aimTime;
@@ -146,8 +148,7 @@ public class MouthEarMonster : MonoBehaviour
         }
 
         ShotCtrl.GetComponent<UbhShotCtrl>()._ShotList[0]._ShotObj.GetComponent<UbhPaintShot>()._PaintCenterAngle = bulletAngle;
-
-
+        
         transform.localEulerAngles = new Vector3(0, 0, angle);
 
         if (_shootTime < ShootTime)
