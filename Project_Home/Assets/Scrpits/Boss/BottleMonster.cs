@@ -22,6 +22,8 @@ public class BottleMonster : MonoBehaviour
     private string stateName;
 
     private int _bloodNum = 3;
+    public GameObject StartShootPos;
+    public GameObject BottleButtlePrefab;
 
     // Use this for initialization
     void Start ()
@@ -69,20 +71,23 @@ public class BottleMonster : MonoBehaviour
 
     void Aim()
     {
-        angle = Mathf.Rad2Deg * Mathf.Atan((transform.position.y - _target.position.y) / (transform.position.x - _target.position.x));
+        if (_target!=null) {
+            angle = Mathf.Rad2Deg * Mathf.Atan((transform.position.y - _target.position.y) / (transform.position.x - _target.position.x));
 
-        if (transform.position.x - _target.position.x < 0)
-            angle = angle - 90;
+            if (transform.position.x - _target.position.x < 0)
+                angle = angle - 90;
 
-        else
-            angle = angle + 90;
+            else
+                angle = angle + 90;
 
-        transform.localEulerAngles = new Vector3(0, 0, angle);
+            transform.localEulerAngles = new Vector3(0, 0, angle);
 
-        if (Anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f && Anim.GetCurrentAnimatorStateInfo(0).IsName("BottlePrepare"))
-        {
-            CutShot();
+            if (Anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f && Anim.GetCurrentAnimatorStateInfo(0).IsName("BottlePrepare")) {
+                CutShot();
+            }
         }
+
+      
     }
 
     void Shoot()
@@ -110,6 +115,7 @@ public class BottleMonster : MonoBehaviour
 
     void Fire()
     {
+        Instantiate(BottleButtlePrefab,StartShootPos.transform.position,StartShootPos.transform.rotation);
         Anim.SetTrigger("Rotate");
         if (Anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f && Anim.GetCurrentAnimatorStateInfo(0).IsName("BottleRotate"))
         {

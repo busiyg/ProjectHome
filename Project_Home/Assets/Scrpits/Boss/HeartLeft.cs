@@ -19,6 +19,7 @@ public class HeartLeft : MonoBehaviour
     {
         if (collider.tag.Equals("Player"))
         {
+            GameManager.GetInstance().GameOver();
             Debug.Log("左心打中主角");
         }
     }

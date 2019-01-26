@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scrpits\GameManager.cs" />
     <Compile Include="Assets\Scrpits\PlayerController.cs" />
     <Compile Include="Assets\Scrpits\StoryAni.cs" />
+    <Compile Include="Assets\Scrpits\UIManager.cs" />
     <Compile Include="Assets\UniBulletHell\Example\Script\UbhAutoDespawnParticle.cs" />
     <Compile Include="Assets\UniBulletHell\Example\Script\UbhAutoScaleGUIText.cs" />
     <Compile Include="Assets\UniBulletHell\Example\Script\UbhBackground.cs" />
