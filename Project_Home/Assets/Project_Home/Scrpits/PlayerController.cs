@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void HorizontialMove() {
-        transform.Translate(Input.GetAxis("Horizontal") * SpeedScale,0,0);
+        transform.Translate(Input.GetAxis("Horizontal") * SpeedScale,Input.GetAxis("Vertical") * SpeedScale, 0);
     }
 
     public void VerticalMove() {
