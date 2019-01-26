@@ -63,9 +63,9 @@
   <ItemGroup>
     <Compile Include="Assets\Demigiant\DOTween\Examples\Basics.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Examples\Sequences.cs" />
-    <Compile Include="Assets\Project_Home\Scrpits\CameraController.cs" />
-    <Compile Include="Assets\Project_Home\Scrpits\GameManager.cs" />
-    <Compile Include="Assets\Project_Home\Scrpits\PlayerController.cs" />
+    <Compile Include="Assets\Scrpits\CameraController.cs" />
+    <Compile Include="Assets\Scrpits\GameManager.cs" />
+    <Compile Include="Assets\Scrpits\PlayerController.cs" />
     <None Include="Assets\Demigiant\DOTween\readme.txt" />
     <None Include="Assets\Demigiant\DOTween\DOTween50.xml" />
     <None Include="Assets\Demigiant\DOTween\DOTween46.xml" />
