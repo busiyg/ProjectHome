@@ -25,6 +25,7 @@ public class MouthEarMonster : MonoBehaviour
     private string _stateName;
     private Transform _target;
     public Animator Anim { get; set; }
+    public bool Dead = false;
 
     public bool c;
 
@@ -47,6 +48,9 @@ public class MouthEarMonster : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+        if (Dead) {
+            return;
+        }
 	    if (_target == null)
 	    {
 	        return;
@@ -67,8 +71,11 @@ public class MouthEarMonster : MonoBehaviour
 
 	    if (_bloodNum == 0)
 	    {
-            GameManager.GetInstance().FinishLevel();
-            Destroy(gameObject);
+            print("!!!!!!!!!!!!!!!!!!!");
+            Dead = true;
+          
+            Anim.Play("Death");
+            Invoke("Die",3);
         //    gameObject.SetActive(false);
 	    }
 
@@ -86,6 +93,11 @@ public class MouthEarMonster : MonoBehaviour
         }
         
 	}
+
+    public void Die() {
+        GameManager.GetInstance().FinishLevel();
+        Destroy(gameObject);
+    }
 
     void CutAim()
     {
