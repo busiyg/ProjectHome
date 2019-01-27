@@ -897,7 +897,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.6752214, y: 1.1070862}
+  m_Offset: {x: 11.448752, y: -0.24099159}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -908,7 +908,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.350443, y: 29.553429}
+  m_Size: {x: 23.897505, y: 43.03419}
   m_EdgeRadius: 0
 --- !u!4 &451549201
 Transform:
@@ -1259,7 +1259,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.1422875, y: 1.0196877}
+  m_Offset: {x: -10.436015, y: 0.10491943}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1270,7 +1270,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.284575, y: 25.066763}
+  m_Size: {x: 21.87203, y: 44.999046}
   m_EdgeRadius: 0
 --- !u!4 &740889331
 Transform:
@@ -1334,7 +1334,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.43121004, y: -6.3135514}
+  m_Offset: {x: -0.14187193, y: -14.90979}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1345,7 +1345,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 29.223854, y: 5.002837}
+  m_Size: {x: 30.370018, y: 22.195316}
   m_EdgeRadius: 0
 --- !u!4 &864455721
 Transform:
@@ -1852,7 +1852,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.13986921, y: -2.350822}
+  m_Offset: {x: -0.26549816, y: 4.741228}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1863,7 +1863,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 27.126205, y: 5.273614}
+  m_Size: {x: 40.097847, y: 19.457714}
   m_EdgeRadius: 0
 --- !u!4 &1181126132
 Transform:
@@ -1947,7 +1947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -2696,52 +2696,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1636884369}
   m_CullTransparentMesh: 0
---- !u!1001 &1733496648
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4022029059983030, guid: a190569947b1e1448878bc21ca16aa90, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4022029059983030, guid: a190569947b1e1448878bc21ca16aa90, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4022029059983030, guid: a190569947b1e1448878bc21ca16aa90, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4022029059983030, guid: a190569947b1e1448878bc21ca16aa90, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4022029059983030, guid: a190569947b1e1448878bc21ca16aa90, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4022029059983030, guid: a190569947b1e1448878bc21ca16aa90, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4022029059983030, guid: a190569947b1e1448878bc21ca16aa90, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4022029059983030, guid: a190569947b1e1448878bc21ca16aa90, type: 2}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1832065034199080, guid: a190569947b1e1448878bc21ca16aa90, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a190569947b1e1448878bc21ca16aa90, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &1746323335
 GameObject:
   m_ObjectHideFlags: 0

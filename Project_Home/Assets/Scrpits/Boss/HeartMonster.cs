@@ -18,6 +18,7 @@ public class HeartMonster : MonoBehaviour
 
     private string _stateName;
     private Transform _target;
+    private int Hp = 3;
 
     // Use this for initialization
     void Start ()
@@ -68,13 +69,27 @@ public class HeartMonster : MonoBehaviour
         Right.transform.DOLocalMoveX(0.7f, 0.2f);
 
         if (WaterList.Count > 3) {
-            GameManager.GetInstance().ShowdFinishBG();
-            StopAllCoroutines();
+            Hp -= 1;
+            Left.GetComponent<SpriteRenderer>().DOColor(Color.black, 0.5f).OnComplete(() => {
+                Left.GetComponent<SpriteRenderer>().DOColor(Color.white, 0.5f);
+            }); ;
+            Right.GetComponent<SpriteRenderer>().DOColor(Color.black, 0.5f).OnComplete(() => {
+                Right.GetComponent<SpriteRenderer>().DOColor(Color.white, 0.5f);
+            }); ;
+            foreach (var obj in WaterList) {
+                Destroy(obj.gameObject);
+            }
+            WaterList.Clear();
         } else {
             foreach (var obj in WaterList) {
                 Destroy(obj.gameObject);
             }
             WaterList.Clear();
+        }
+
+        if (Hp<=0) {
+            GameManager.GetInstance().ShowdFinishBG();
+            StopAllCoroutines();
         }
 
         yield return  new WaitForSeconds(1.0f);

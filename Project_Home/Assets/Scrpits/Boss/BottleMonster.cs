@@ -18,7 +18,6 @@ public class BottleMonster : MonoBehaviour
     public Animator Anim;
 
     private float angle;
-
     private string stateName;
 
     private int _bloodNum = 3;
