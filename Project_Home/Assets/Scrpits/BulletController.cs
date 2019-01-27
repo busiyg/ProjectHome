@@ -1,19 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class BulletController : MonoBehaviour {
     public float Speed;
     public Vector3 Dir;
     public bool Ready = false;
-	// Use this for initialization
-	void Start () {
-        
-	}
+    // Use this for initialization
+    void Start() {
+
+    }
 
     public IEnumerator ReadyDestroy() {
         yield return new WaitForSeconds(3);
-        if (Ready==true) {
+        if (Ready == true) {
             Destroy(gameObject, 0);
         }
 
@@ -23,13 +24,13 @@ public class BulletController : MonoBehaviour {
         Dir = dir;
         Ready = true;
     }
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+
+    // Update is called once per frame
+    void FixedUpdate() {
         if (Dir != null) {
             gameObject.transform.Translate(Dir * Speed);
         }
-	}
+    }
 
     void OnTriggerStay2D(Collider2D collider) {
         if (collider.tag.Equals("Boss")) {
@@ -41,6 +42,7 @@ public class BulletController : MonoBehaviour {
         }
 
         if (collider.tag.Equals("HeartWeak")) {
+      
             Destroy(GetComponent<BoxCollider2D>());
             Ready = false;
             StopAllCoroutines();
