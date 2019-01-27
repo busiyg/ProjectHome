@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour {
     //切换关卡
     public void ChangeLevel(int level) {
         MaskFadeInAndOut(() => {
+            AudioManager.PlayBGM(level);
             InitPlayer();
             Instance.CurrentLevel = level;
             Instance.CleanTable();
@@ -96,6 +97,7 @@ public class GameManager : MonoBehaviour {
 
     //背景部分
     public void ShowdFinishBG() {
+        AudioManager.PlayBGM(4);
         finishBG.DOFade(1,3).OnComplete(()=> {
             StoryAni.Play("Ani3");
         });

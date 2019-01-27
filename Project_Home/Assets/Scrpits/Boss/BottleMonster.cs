@@ -12,7 +12,7 @@ public class BottleMonster : MonoBehaviour
     public float ASpeed;
     public SpriteRenderer BottleImg;
     public float HurtTime;
-
+    public GameObject Stun;
 
     private Transform _target;
     public Animator Anim;
@@ -157,18 +157,21 @@ public class BottleMonster : MonoBehaviour
 
     void CutAim()
     {
+        Stun.SetActive(false);
         _speed = 0;
         stateName = "Aim";
     }
 
     void CutShot()
     {
+        Stun.SetActive(false);
         Anim.SetBool("Fire", true);
         stateName = "Shoot";
     }
 
     void CutDizzy()
     {
+        Stun.SetActive(true);
         _speed = 0;
         Anim.SetTrigger("Idle");
         stateName = "Dizzy";

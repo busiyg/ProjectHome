@@ -36,14 +36,10 @@ public class AudioManager : MonoBehaviour {
     public static void PlayBGM(int Key) {
         foreach (var obj in Instance.BGMaudios) {
             if (Key == obj.key) {
-                Instance.audioSource.clip = obj.Clip;
-                Instance.audioSource.Play();
+                Instance.BGMSource.clip = obj.Clip;
+                Instance.BGMSource.Play();
             }
         }
-    }
-
-    public static void PlayerAudio(int key) {
-
     }
 
     [System.Serializable]
