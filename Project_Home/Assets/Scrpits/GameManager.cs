@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour {
     }
     void Start () {
         //ChangeLevel(1);
-
+       ChangeLevel(1);
     }
 
     public static GameManager GetInstance() {
@@ -96,7 +96,9 @@ public class GameManager : MonoBehaviour {
 
     //背景部分
     public void ShowdFinishBG() {
-        finishBG.DOFade(1,2);
+        finishBG.DOFade(1,3).OnComplete(()=> {
+            StoryAni.Play("Ani3");
+        });
     }
 
     public static void SetBG(int key) {
@@ -105,6 +107,13 @@ public class GameManager : MonoBehaviour {
                 Instance.BGRenderer.sprite = obj;
             }
         }
+    }
+
+    public void FinishLevel() {
+        string N = "Ani" + CurrentLevel.ToString();
+        MaskFadeInAndOut(() => {
+            StoryAni.Play(N);
+        });
     }
 
     public void ChangeLevelT(int n) {

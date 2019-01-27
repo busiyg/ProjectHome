@@ -26,11 +26,13 @@ public class MouthEarMonster : MonoBehaviour
     private Transform _target;
     public Animator Anim { get; set; }
 
+    public bool c;
+
     private float angle;
 
     private int _index;
 
-    private int _bloodNum = 3;
+    public  int _bloodNum = 3;
 
     // Use this for initialization
     void Start ()
@@ -65,7 +67,9 @@ public class MouthEarMonster : MonoBehaviour
 
 	    if (_bloodNum == 0)
 	    {
-            gameObject.SetActive(false);
+            GameManager.GetInstance().FinishLevel();
+            Destroy(gameObject);
+        //    gameObject.SetActive(false);
 	    }
 
 	    if (Vector3.Dot(Vector3.up, new Vector3(transform.position.y - _target.position.y, transform.position.x - _target.position.x, 0)) > 0)

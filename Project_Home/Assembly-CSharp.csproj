@@ -77,6 +77,8 @@
     <Compile Include="Assets\Scrpits\BossBulletController.cs" />
     <Compile Include="Assets\Scrpits\BulletController.cs" />
     <Compile Include="Assets\Scrpits\CameraController.cs" />
+    <Compile Include="Assets\Scrpits\DebugTest.cs" />
+    <Compile Include="Assets\Scrpits\DoorController.cs" />
     <Compile Include="Assets\Scrpits\GameManager.cs" />
     <Compile Include="Assets\Scrpits\PlayerController.cs" />
     <Compile Include="Assets\Scrpits\StoryAni.cs" />

@@ -18,13 +18,12 @@ public class HeartMonster : MonoBehaviour
 
     private string _stateName;
     private Transform _target;
-    private int Hp = 3;
+    public int _bloodNum = 3;
 
     // Use this for initialization
     void Start ()
 	{
 	    _target = GameObject.FindWithTag("Player").transform;
-
 	    CutAim();
 	}
 	
@@ -41,7 +40,7 @@ public class HeartMonster : MonoBehaviour
             case "Dizzy":
                 break;
 	    }
-	}
+    }
 
     void CutAim()
     {
@@ -69,7 +68,7 @@ public class HeartMonster : MonoBehaviour
         Right.transform.DOLocalMoveX(0.7f, 0.2f);
 
         if (WaterList.Count > 3) {
-            Hp -= 1;
+            _bloodNum -= 1;
             Left.GetComponent<SpriteRenderer>().DOColor(Color.black, 0.5f).OnComplete(() => {
                 Left.GetComponent<SpriteRenderer>().DOColor(Color.white, 0.5f);
             }); ;
@@ -87,7 +86,7 @@ public class HeartMonster : MonoBehaviour
             WaterList.Clear();
         }
 
-        if (Hp<=0) {
+        if (_bloodNum <= 0) {
             GameManager.GetInstance().ShowdFinishBG();
             StopAllCoroutines();
         }

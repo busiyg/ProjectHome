@@ -20,12 +20,13 @@ public class BottleMonster : MonoBehaviour
     private float angle;
     private string stateName;
 
-    private int _bloodNum = 3;
+    public int _bloodNum = 3;
     public GameObject StartShootPos;
     public GameObject BottleButtlePrefab;
 
     private int ShootCountDownTimer=0;
     public int ShootCountDown;
+
 
     // Use this for initialization
     void Start ()
@@ -50,10 +51,12 @@ public class BottleMonster : MonoBehaviour
             }
         }
 
-	    if (_bloodNum == 0)
+        if (_bloodNum == 0)
 	    {
-            gameObject.SetActive(false);
-            GameManager.GetInstance().ChangeLevelT(2);
+            GameManager.GetInstance().FinishLevel();
+            Destroy(gameObject);
+          //  gameObject.SetActive(false);
+  
 
         }
 

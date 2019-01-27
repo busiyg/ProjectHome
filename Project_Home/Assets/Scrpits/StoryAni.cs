@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class StoryAni : MonoBehaviour {
-
+    public Animator storyAnimator;
 	// Use this for initialization
 	void Start () {
 		
@@ -14,7 +14,22 @@ public class StoryAni : MonoBehaviour {
 		
 	}
 
-    public void Ani_Finish(int K) {
-        GameManager.GetInstance().ChangeLevel(K);
+
+
+
+    public void Finish0() {
+        GameManager.GetInstance().ChangeLevel(1);
+    }
+
+    public void Finish1() {
+        GameManager.GetInstance().ChangeLevel(2);
+    }
+
+    public void Finish2() {
+        GameManager.GetInstance().ChangeLevel(3);
+    }
+
+    public void Finish3() {
+        //GameManager.GetInstance().ChangeLevel(K);
     }
 }

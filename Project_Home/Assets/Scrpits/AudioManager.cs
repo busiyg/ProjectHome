@@ -5,7 +5,9 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour {
     private static AudioManager Instance;
     public List<Audios> audios=new List<Audios>();
+    public List<Audios> BGMaudios = new List<Audios>();
     public AudioSource audioSource;
+    public AudioSource BGMSource;
 
 
     private void Awake() {
@@ -13,7 +15,7 @@ public class AudioManager : MonoBehaviour {
     }
     // Use this for initialization
     void Start() {
-
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
@@ -22,15 +24,24 @@ public class AudioManager : MonoBehaviour {
     }
 
 
-    public static void PlayerAudioClip(int Key) {
+    public static void PlayAudioClip(int Key) {
         foreach (var obj in Instance.audios) {
             if (Key == obj.key) {
                 Instance.audioSource.clip = obj.Clip;
                 Instance.audioSource.Play();
             }
         }
-
     }
+
+    public static void PlayBGM(int Key) {
+        foreach (var obj in Instance.BGMaudios) {
+            if (Key == obj.key) {
+                Instance.audioSource.clip = obj.Clip;
+                Instance.audioSource.Play();
+            }
+        }
+    }
+
     public static void PlayerAudio(int key) {
 
     }
