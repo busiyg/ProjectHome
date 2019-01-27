@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour {
 
     public GameObject GameOverPage;
     public GameObject StartGamePage;
+    public Animator Ani;
     // Use this for initialization
 
     private void Awake() {
@@ -28,7 +29,7 @@ public class UIManager : MonoBehaviour {
     }
 
     public void OnStartGame() {
-        GameManager.GetInstance().ChangeLevelT(1);
+        Ani.Play("Ani0");
         HideStartGamePage();
     }
 

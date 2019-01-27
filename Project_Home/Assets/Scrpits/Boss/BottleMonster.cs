@@ -20,12 +20,14 @@ public class BottleMonster : MonoBehaviour
     private float angle;
     private string stateName;
 
-    private int _bloodNum = 3;
+    public int _bloodNum = 3;
     public GameObject StartShootPos;
     public GameObject BottleButtlePrefab;
 
     private int ShootCountDownTimer=0;
     public int ShootCountDown;
+    public bool Dead=false;
+
 
     // Use this for initialization
     void Start ()
@@ -37,38 +39,45 @@ public class BottleMonster : MonoBehaviour
     
     void Update ()
 	{
-	    if (Input.GetKeyDown(KeyCode.E))
-	    {
-	        CutState("Shoot");
-        }
+        if (Dead==false) {
+            if (Input.GetKeyDown(KeyCode.E)) {
+                CutState("Shoot");
+            }
 
-	    if (Input.GetKeyDown(KeyCode.R))
-	    {
-	        if (stateName == "Dizzy" && !_isHurt)
-	        {
-	            StartCoroutine(HurtCoroutine());
+            if (Input.GetKeyDown(KeyCode.R)) {
+                if (stateName == "Dizzy" && !_isHurt) {
+                    StartCoroutine(HurtCoroutine());
+                }
+            }
+
+            if (_bloodNum == 0) {
+                Dead = true;
+                Anim.Play("BottleDead");
+                Invoke("Die",2);
+              
+                //  gameObject.SetActive(false);
+
+
+            }
+
+            switch (stateName) {
+                case "Aim":
+                    Aim();
+                    break;
+                case "Shoot":
+                    Shoot();
+                    break;
+                case "Dizzy":
+                    Dizzy();
+                    break;
             }
         }
+	   
+    }
 
-	    if (_bloodNum == 0)
-	    {
-            gameObject.SetActive(false);
-            GameManager.GetInstance().ChangeLevelT(2);
-
-        }
-
-	    switch (stateName)
-	    {
-	        case "Aim":
-	            Aim();
-                break;
-	        case "Shoot":
-	            Shoot();
-                break;
-            case "Dizzy":
-                Dizzy();
-                break;
-	    }
+    public void Die() {
+        GameManager.GetInstance().FinishLevel();
+        Destroy(gameObject);
     }
 
     void Aim()

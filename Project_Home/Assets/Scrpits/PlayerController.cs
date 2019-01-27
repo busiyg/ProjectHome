@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
     public float SpeedScale;
@@ -12,9 +13,10 @@ public class PlayerController : MonoBehaviour {
 
     public Animator HeadAni;
     public Animator BodyAni;
+    public string SceneName;
     // Use this for initialization
     void Start() {
-
+        SceneName = SceneManager.GetActiveScene().name;
     }
 
     // Update is called once per frame
@@ -28,7 +30,7 @@ public class PlayerController : MonoBehaviour {
     public void Shoot() {
         if (Input.GetMouseButtonDown(0)) {
             ShootDir();
-            AudioManager.PlayerAudioClip(1);
+            AudioManager.PlayAudioClip(1);
             var bullet = Instantiate(BulletPrefab, HeadAni.transform.position, transform.rotation);
             bullet.GetComponent<BulletController>().InitBullet(CurrentVector3);
             BackIdle();
@@ -61,7 +63,7 @@ public class PlayerController : MonoBehaviour {
      
         if ((Input.GetAxis("Horizontal") !=0|| Input.GetAxis("Vertical") !=0)&& Input.GetKeyDown(KeyCode.Space)) {
             print("roll!!!!!!   ");
-            AudioManager.PlayerAudioClip(2);
+            AudioManager.PlayAudioClip(2);
             float BeforeSpeed = SpeedScale;
             SpeedScale = SpeedScale * 3;
             DOTween.To(() => SpeedScale, x => SpeedScale = x, BeforeSpeed, 0.3f);
@@ -70,34 +72,37 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void ShootDir() {
-        Vector3 MouseDownPos = Input.mousePosition;
-        Vector3 Tar = Camera.main.ScreenToWorldPoint(MouseDownPos);
-        float DisX = Tar.x - transform.position.x;
-        float DisY = Tar.y - transform.position.y;
+        if (SceneName == "Game") {
+            Vector3 MouseDownPos = Input.mousePosition;
+            Vector3 Tar = Camera.main.ScreenToWorldPoint(MouseDownPos);
+            float DisX = Tar.x - transform.position.x;
+            float DisY = Tar.y - transform.position.y;
 
-        if (Mathf.Abs(DisX) - Mathf.Abs(DisY) > 0) {
+            if (Mathf.Abs(DisX) - Mathf.Abs(DisY) > 0) {
 
-            if (DisX > 0) {
-                CurrentDirection = Direction.D;
-                CurrentVector3 = Vector3.right;
-                HeadAni.Play("HeadRight");
+                if (DisX > 0) {
+                    CurrentDirection = Direction.D;
+                    CurrentVector3 = Vector3.right;
+                    HeadAni.Play("HeadRight");
+                } else {
+                    CurrentDirection = Direction.A;
+                    CurrentVector3 = Vector3.left;
+                    HeadAni.Play("HeadLeft");
+                }
             } else {
-                CurrentDirection = Direction.A;
-                CurrentVector3 = Vector3.left;
-                HeadAni.Play("HeadLeft");
-            }
-        } else {
-          
-            if (DisY > 0) {
-                CurrentDirection = Direction.W;
-                CurrentVector3 = Vector3.up;
-                HeadAni.Play("HeadUp");
-            } else {
-                CurrentDirection = Direction.S;
-                CurrentVector3 = Vector3.down;
-                HeadAni.Play("HeadDown");
+
+                if (DisY > 0) {
+                    CurrentDirection = Direction.W;
+                    CurrentVector3 = Vector3.up;
+                    HeadAni.Play("HeadUp");
+                } else {
+                    CurrentDirection = Direction.S;
+                    CurrentVector3 = Vector3.down;
+                    HeadAni.Play("HeadDown");
+                }
             }
         }
+      
     }
 
     public void Move() {
