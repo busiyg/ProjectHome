@@ -65,7 +65,8 @@ public class MouthEarMonster : MonoBehaviour
 
 	    if (_bloodNum == 0)
 	    {
-            gameObject.SetActive(false);
+	        Anim.SetTrigger("Aim");
+            //gameObject.SetActive(false);
 	    }
 
 	    if (Vector3.Dot(Vector3.up, new Vector3(transform.position.y - _target.position.y, transform.position.x - _target.position.x, 0)) > 0)
