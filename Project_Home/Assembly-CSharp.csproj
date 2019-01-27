@@ -65,12 +65,14 @@
     <Compile Include="Assets\Demigiant\DOTween\Examples\Sequences.cs" />
     <Compile Include="Assets\Scrpits\AudioManager.cs" />
     <Compile Include="Assets\Scrpits\Boss\BottleMonster.cs" />
+    <Compile Include="Assets\Scrpits\Boss\EarCollider.cs" />
     <Compile Include="Assets\Scrpits\Boss\HeartCenter.cs" />
     <Compile Include="Assets\Scrpits\Boss\HeartHit.cs" />
     <Compile Include="Assets\Scrpits\Boss\HeartLeft.cs" />
     <Compile Include="Assets\Scrpits\Boss\HeartMonster.cs" />
     <Compile Include="Assets\Scrpits\Boss\HeartRight.cs" />
     <Compile Include="Assets\Scrpits\Boss\HeartWeak.cs" />
+    <Compile Include="Assets\Scrpits\Boss\MouthCollider.cs" />
     <Compile Include="Assets\Scrpits\Boss\MouthEarMonster.cs" />
     <Compile Include="Assets\Scrpits\BossBulletController.cs" />
     <Compile Include="Assets\Scrpits\BulletController.cs" />

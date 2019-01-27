@@ -373,7 +373,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 609b130f47a8f2d43a54245afd9e134d, type: 3}
   Bosses:
   - {fileID: 1933280784273020, guid: 1c28170a89dc0d14fb39272300c9312e, type: 2}
-  - {fileID: 1855951234368896, guid: 52a610f571534b046828c6560af5ff82, type: 2}
+  - {fileID: 1628655605341164, guid: 93a8cc3ddca526d46abfc5b11a19fa60, type: 2}
   - {fileID: 1832065034199080, guid: a190569947b1e1448878bc21ca16aa90, type: 2}
   Bullets:
   - {fileID: 1820853267845350, guid: 030e5f358828f684ba2f014c26ab5475, type: 2}
@@ -2735,59 +2735,13 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1832065034199080, guid: a190569947b1e1448878bc21ca16aa90, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a190569947b1e1448878bc21ca16aa90, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &1733496649 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1080594952351214, guid: a190569947b1e1448878bc21ca16aa90,
-    type: 2}
-  m_PrefabInternal: {fileID: 1733496648}
---- !u!1 &1733496650 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1812204453094838, guid: a190569947b1e1448878bc21ca16aa90,
-    type: 2}
-  m_PrefabInternal: {fileID: 1733496648}
---- !u!50 &1733496651
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1733496649}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!50 &1733496652
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1733496650}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &1746323335
 GameObject:
   m_ObjectHideFlags: 0
