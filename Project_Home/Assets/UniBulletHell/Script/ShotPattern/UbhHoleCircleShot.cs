@@ -48,6 +48,15 @@ public class UbhHoleCircleShot : UbhBaseShot
             AutoReleaseBulletGameObject(bullet.gameObject);
         }
 
+        StartCoroutine(A());
+        //MouthEarMonster.Anim.SetBool("Mouth", true);
+
+    }
+
+    IEnumerator A()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log("环形子弹发射完毕");
         FinishedShot();
     }
 }

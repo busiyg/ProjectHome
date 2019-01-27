@@ -1,24 +1,36 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using DG.Tweening;
 using UnityEngine;
 
 public class MouthEarMonster : MonoBehaviour
 {
     public GameObject ShotCtrl;
+    public List<GameObject> ShotCtrlList = new List<GameObject>();
     public float Speed;
     public float RotateSpeed;
     public Transform MouthMonstImg;
     public float AimTime;
-    public float ShootTime;
+    public float DizzyTime;
 
-    public bool IsShot;
+    public GameObject Ear;
+
+    public SpriteRenderer MouthImg;
+    public float HurtTime;
+
+    public GameObject FlipFalseCollider;
+    public GameObject FlipTrueCollier;
 
     private string _stateName;
     private Transform _target;
-    public Animator Anim;
+    public Animator Anim { get; set; }
 
     private float angle;
+
+    private int _index;
+
+    private int _bloodNum = 3;
 
     // Use this for initialization
     void Start ()
@@ -42,9 +54,14 @@ public class MouthEarMonster : MonoBehaviour
                 Shoot();
                 break;
             case "Dizzy":
+                Dizzy();
                 break;
         }
 
+	    if (_bloodNum == 0)
+	    {
+            gameObject.SetActive(false);
+	    }
 
 	    if (Vector3.Dot(Vector3.up, new Vector3(transform.position.y - _target.position.y, transform.position.x - _target.position.x, 0)) > 0)
 	    {
@@ -63,24 +80,51 @@ public class MouthEarMonster : MonoBehaviour
 
     void CutAim()
     {
+        //Ear.gameObject.SetActive(false);
+        Ear.GetComponent<EdgeCollider2D>().enabled = false;
+
+        Anim.SetTrigger("Aim");
+        Anim.ResetTrigger("Idle");
+        Anim.ResetTrigger("EnterFire");
+        Anim.ResetTrigger("Weak");
+        //Quaternion q= Quaternion.Euler(new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0));
+        //transform.localRotation = q;
+        // MouthMonstImg.GetComponent<SpriteRenderer>().flipX = false;
         _stateName = "Aim";
     }
 
     void CutShoot()
     {
+        Anim.ResetTrigger("Aim");
         MouthMonstImg.rotation=Quaternion.identity;
         MouthMonstImg.GetComponent<SpriteRenderer>().flipX = false;
-        ShotCtrl.SetActive(true);
+        ShotCtrlList[_index].SetActive(true);
         Anim.SetTrigger("Idle");
         _stateName = "Shoot";
 
         StartCoroutine(ShootCoroutine());
     }
 
+    void CutDizzy()
+    {
+        Anim.SetTrigger("Weak");
+        Quaternion q = Quaternion.Euler(new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0));
+        transform.localRotation = q;
+
+        Ear.GetComponent<EdgeCollider2D>().enabled = true;
+        //Ear.gameObject.SetActive(true);
+
+        _isHurt = true;
+
+        _stateName = "Dizzy";
+    }
+
     IEnumerator ShootCoroutine()
     {
         yield return new WaitForSeconds(1.0f);
         Anim.SetTrigger("EnterFire");
+
+        //_stateName = "Shoot";
     }
 
     private float _aimTime;
@@ -90,11 +134,15 @@ public class MouthEarMonster : MonoBehaviour
         {
          //   Debug.Log("左边");
             MouthMonstImg.GetComponent<SpriteRenderer>().flipX = false;
+            FlipFalseCollider.SetActive(true);
+            FlipTrueCollier.SetActive(false);
         }
         if (Vector3.Dot(transform.up, new Vector3(transform.position.y - _target.position.y, transform.position.x - _target.position.x,  0)) < 0)
         {
          //   Debug.Log("右边");
             MouthMonstImg.GetComponent<SpriteRenderer>().flipX = true;
+            FlipFalseCollider.SetActive(false);
+            FlipTrueCollier.SetActive(true);
         }
     
         Vector2 dir = _target.position - transform.position;
@@ -119,6 +167,9 @@ public class MouthEarMonster : MonoBehaviour
         {
            // Debug.Log("左边");
             MouthMonstImg.GetComponent<SpriteRenderer>().flipX = false;
+            FlipFalseCollider.SetActive(true);
+            FlipTrueCollier.SetActive(false);
+
             angle = Mathf.Rad2Deg * Mathf.Atan((transform.position.y - _target.position.y) / (transform.position.x - _target.position.x));
 
             if (transform.position.x - _target.position.x < 0)
@@ -134,6 +185,8 @@ public class MouthEarMonster : MonoBehaviour
         {
            // Debug.Log("右边");
             MouthMonstImg.GetComponent<SpriteRenderer>().flipX = true;
+            FlipFalseCollider.SetActive(false);
+            FlipTrueCollier.SetActive(true);
 
             angle = Mathf.Rad2Deg * Mathf.Atan((transform.position.y - _target.position.y) / (transform.position.x - _target.position.x));
 
@@ -147,19 +200,93 @@ public class MouthEarMonster : MonoBehaviour
             bulletAngle = 360 - bulletAngle;
         }
 
-        ShotCtrl.GetComponent<UbhShotCtrl>()._ShotList[0]._ShotObj.GetComponent<UbhPaintShot>()._PaintCenterAngle = bulletAngle;
-        
-        transform.localEulerAngles = new Vector3(0, 0, angle);
-
-        if (_shootTime < ShootTime)
+        ShotCtrlList[_index].GetComponent<UbhShotCtrl>()._ShotList[0]._ShotObj.GetComponent<UbhPaintShot>()._PaintCenterAngle = bulletAngle;
+        switch (_index)
         {
-            _shootTime += Time.deltaTime;
+            case 0:
+                ShotCtrlList[_index].GetComponent<UbhShotCtrl>()._ShotList[1]._ShotObj.GetComponent<UbhNwayShot>()._CenterAngle = bulletAngle;
+                //ShotCtrlList[_index].GetComponent<UbhShotCtrl>()._ShotList[1]._ShotObj.GetComponent<UbhSinWaveBulletNwayShot>()._CenterAngle = bulletAngle;
+                break;
+            case 1:
+                ShotCtrlList[_index].GetComponent<UbhShotCtrl>()._ShotList[1]._ShotObj.GetComponent<UbhHoleCircleShot>()._HoleCenterAngle = bulletAngle;
+                break;
+            case 2:
+                ShotCtrlList[_index].GetComponent<UbhShotCtrl>()._ShotList[1]._ShotObj.GetComponent<UbhSinWaveBulletNwayShot>()._CenterAngle = bulletAngle;
+                break;
+        }
+        
+        
+
+        transform.localEulerAngles = new Vector3(0, 0, angle);
+    }
+
+    public void FireOver()
+    {
+        if (_index < 2)
+        {
+            _index++;
         }
         else
         {
-            //ShotCtrl.SetActive(true);
-            //CutShoot();
-            //_aimTime = 0;
+            _index = 0;
+        }
+        
+        //CutAim();
+        //Anim.SetTrigger("Aim");
+        //Anim.ResetTrigger("Idle");
+        //Anim.ResetTrigger("EnterFire");
+
+        CutDizzy();
+        
+    }
+
+    private float _dizzyTime;
+    void Dizzy()
+    {
+        if (_dizzyTime < DizzyTime)
+        {
+            _dizzyTime += Time.deltaTime;
+        }
+        else
+        {
+            CutAim();
+            _dizzyTime = 0;
+            _isHurt = false;
         }
     }
+
+    public void Hurt()
+    {
+        if (_isHurt)
+        {
+            StartCoroutine(HurtCoroutine());
+        }
+    }
+
+    private bool _isHurt;
+    IEnumerator HurtCoroutine()
+    {
+        _bloodNum--;
+        _isHurt = false;
+
+        MouthImg.DOColor(Color.red, HurtTime);
+        yield return new WaitForSeconds(HurtTime);
+        MouthImg.DOColor(Color.white, HurtTime);
+
+        _dizzyTime = DizzyTime + 1;
+    }
+
+    //void OnTriggerEnter2D(Collider2D collider)
+    //{
+    //    //Debug.Log(collider);
+    //    if (collider.tag.Equals("Player"))
+    //    {
+    //        Debug.Log("击中主角");
+    //    }
+    //    if (collider.tag.Equals("love"))
+    //    {
+    //        collider.gameObject.SetActive(false);
+    //        Debug.Log("打中嘴");
+    //    }
+    //}
 }

@@ -33,12 +33,20 @@ public class UbhShotCtrl : UbhMonoBehaviour
     public bool _AtRandom = false;
     // "List of shot information. this size is necessary at least 1 or more."
     public List<ShotInfo> _ShotList = new List<ShotInfo>();
+
     bool _Shooting;
 
-    IEnumerator Start ()
+    void OnEnable ()
     {
-        if (_StartOnAwake) {
-            if (0f < _StartOnAwakeDelay) {
+        StartCoroutine(A());
+    }
+
+    IEnumerator A()
+    {
+        if (_StartOnAwake)
+        {
+            if (0f < _StartOnAwakeDelay)
+            {
                 yield return StartCoroutine(UbhUtil.WaitForSeconds(_StartOnAwakeDelay));
             }
             StartShotRoutine();
@@ -139,6 +147,8 @@ public class UbhShotCtrl : UbhMonoBehaviour
         }
 
         _Shooting = false;
+        MouthMonster.FireOver();
+        gameObject.SetActive(false);
     }
 
     /// <summary>
