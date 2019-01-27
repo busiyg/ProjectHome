@@ -82,8 +82,10 @@ public class HeartMonster : MonoBehaviour
 
     void Aim()
     {
-        Vector2 dir = _target.position - transform.position;
-        transform.Translate(dir * Speed * Time.deltaTime);
+        if (_target!=null) {
+            Vector2 dir = _target.position - transform.position;
+            transform.Translate(dir * Speed * Time.deltaTime);
+        }   
     }
 
     void OnTriggerEnter2D(Collider2D collider)

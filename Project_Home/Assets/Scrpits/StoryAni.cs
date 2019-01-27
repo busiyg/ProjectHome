@@ -15,6 +15,6 @@ public class StoryAni : MonoBehaviour {
 	}
 
     public void Ani_Finish(int K) {
-        GameManager.ChangeLevel(K);
+        GameManager.GetInstance().ChangeLevel(K);
     }
 }
