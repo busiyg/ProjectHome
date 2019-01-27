@@ -105,7 +105,8 @@ public abstract class UbhBaseShot : UbhMonoBehaviour
         _Shooting = false;
 
         //MouthEarMonster.IsShot = false;
-        
+        MouthEarMonster.Anim.SetBool("Mouth", true);
+        Debug.Log(111111111111);
     }
 
     /// <summary>
