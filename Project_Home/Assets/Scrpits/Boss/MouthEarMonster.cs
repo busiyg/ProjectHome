@@ -45,6 +45,11 @@ public class MouthEarMonster : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+	    if (_target == null)
+	    {
+	        return;
+	    }
+
 	    switch (_stateName)
 	    {
             case "Aim":
