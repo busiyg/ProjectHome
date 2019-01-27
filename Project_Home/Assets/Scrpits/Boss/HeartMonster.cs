@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -9,6 +10,13 @@ public class HeartMonster : MonoBehaviour
     public GameObject Right;
     public GameObject Center;
     public GameObject Hit;
+
+    public GameObject LeftBorder;
+    public GameObject RightBorder;
+
+    public GameObject LeftCollider;
+    public GameObject RightCollider;
+
     public float Speed;
     public float ShakeTime;
     public float XShakeWidth;
@@ -53,6 +61,30 @@ public class HeartMonster : MonoBehaviour
         StartCoroutine(CutClipCoroutine());
     }
 
+    void OpenCollider()
+    {
+        LeftCollider.SetActive(true);
+        RightCollider.SetActive(true);
+
+        Left.SetActive(false);
+        Right.SetActive(false);
+
+        LeftBorder.GetComponent<BoxCollider2D>().enabled = false;
+        RightBorder.GetComponent<BoxCollider2D>().enabled = false;
+    }
+
+    public void CloseCollider()
+    {
+        LeftCollider.SetActive(false);
+        RightCollider.SetActive(false);
+
+        Left.SetActive(true);
+        Right.SetActive(true);
+
+        //LeftBorder.GetComponent<BoxCollider2D>().enabled = false;
+        //RightBorder.GetComponent<BoxCollider2D>().enabled = false;
+    }
+
     IEnumerator CutClipCoroutine()
     {
         _stateName = "Clip";
@@ -60,21 +92,31 @@ public class HeartMonster : MonoBehaviour
         Left.transform.DOShakePosition(ShakeTime, new Vector2(XShakeWidth, YShakeWidth));
         Right.transform.DOShakePosition(ShakeTime, new Vector2(XShakeWidth, YShakeWidth));
 
-        yield return new WaitForSeconds(1.1f);
+        Left.GetComponent<EdgeCollider2D>().enabled = false;
+        Right.GetComponent<EdgeCollider2D>().enabled = false;
 
-        //  Left.GetComponent<EdgeCollider2D>().enabled = true;
-        // Right.GetComponent<EdgeCollider2D>().enabled = true;
-        Hit.GetComponent<Collider2D>().enabled = true;
+        LeftBorder.GetComponent<BoxCollider2D>().enabled = true;
+        RightBorder.GetComponent<BoxCollider2D>().enabled = true;
+
+        yield return new WaitForSeconds(ShakeTime + 0.1f);
+
+        LeftCollider.transform.localPosition = new Vector3(-0.5f, 0, 0);
+        RightCollider.transform.localPosition = new Vector3(0.5f, 0, 0);
+        //Hit.GetComponent<Collider2D>().enabled = true;
         Left.transform.DOLocalMoveX(-0.5f, 0.2f);
-        Right.transform.DOLocalMoveX(0.7f, 0.2f);
+        //Right.transform.DOLocalMoveX(0.5f, 0.2f);
+
+        Tweener dolocal= Right.transform.DOLocalMoveX(0.5f, 0.2f);
+
+        dolocal.onComplete += OpenCollider;
 
         if (WaterList.Count > 3) {
             Hp -= 1;
-            Left.GetComponent<SpriteRenderer>().DOColor(Color.black, 0.5f).OnComplete(() => {
-                Left.GetComponent<SpriteRenderer>().DOColor(Color.white, 0.5f);
+            LeftCollider.GetComponent<SpriteRenderer>().DOColor(Color.black, 0.5f).OnComplete(() => {
+                LeftCollider.GetComponent<SpriteRenderer>().DOColor(Color.white, 0.5f);
             }); ;
-            Right.GetComponent<SpriteRenderer>().DOColor(Color.black, 0.5f).OnComplete(() => {
-                Right.GetComponent<SpriteRenderer>().DOColor(Color.white, 0.5f);
+            RightCollider.GetComponent<SpriteRenderer>().DOColor(Color.black, 0.5f).OnComplete(() => {
+                RightCollider.GetComponent<SpriteRenderer>().DOColor(Color.white, 0.5f);
             }); ;
             foreach (var obj in WaterList) {
                 Destroy(obj.gameObject);
@@ -93,16 +135,19 @@ public class HeartMonster : MonoBehaviour
         }
 
         yield return  new WaitForSeconds(1.0f);
-        Hit.GetComponent<Collider2D>().enabled = false;
+        //Hit.GetComponent<Collider2D>().enabled = false;
         // Left.GetComponent<EdgeCollider2D>().enabled = false;
         // Right.GetComponent<EdgeCollider2D>().enabled = false;
-        Left.transform.DOShakePosition(ShakeTime, new Vector2(XShakeWidth, YShakeWidth));
-        Right.transform.DOShakePosition(ShakeTime, new Vector2(XShakeWidth, YShakeWidth));
+        LeftCollider.transform.DOShakePosition(ShakeTime, new Vector2(XShakeWidth, YShakeWidth));
+        RightCollider.transform.DOShakePosition(ShakeTime, new Vector2(XShakeWidth, YShakeWidth));
         yield return new WaitForSeconds(ShakeTime);
 
-        
-        Left.transform.DOLocalMoveX(-1.5f, 0.2f);
-        Right.transform.DOLocalMoveX(1.5f, 0.2f);
+
+        Left.transform.localPosition = new Vector3(-1.5f, 0, 0);
+        Right.transform.localPosition = new Vector3(1.5f, 0, 0);
+        LeftCollider.transform.DOLocalMoveX(-1.5f, 0.2f);
+        Tweener doooo= RightCollider.transform.DOLocalMoveX(1.5f, 0.2f);
+        doooo.onComplete += CloseCollider;
 
         yield return new WaitForSeconds(0.5f);
 

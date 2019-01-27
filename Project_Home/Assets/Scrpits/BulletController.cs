@@ -32,8 +32,12 @@ public class BulletController : MonoBehaviour {
         }
     }
 
-    void OnTriggerStay2D(Collider2D collider) {
-        if (collider.tag.Equals("Boss")) {
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.tag.Equals("Boss"))
+        {
+            Debug.Log("Boss");
+
             Destroy(gameObject);
         }
 
@@ -41,13 +45,17 @@ public class BulletController : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        if (collider.tag.Equals("HeartWeak")) {
-      
-            Destroy(GetComponent<BoxCollider2D>());
-            Ready = false;
-            StopAllCoroutines();
-            Speed = 0;
+        if (collider.tag.Equals("HeartWeak"))
+        {
+            Debug.Log("HeartWeak");
+
             transform.parent = collider.transform;
+            GetComponent<BoxCollider2D>().enabled = false;
+            //Destroy(GetComponent<BoxCollider2D>());
+            Ready = false;
+            //StopAllCoroutines();
+            Speed = 0;
+            
             collider.GetComponent<HeartWeak>().Heart.WaterList.Add(gameObject);
         }
     }

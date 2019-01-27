@@ -41,6 +41,8 @@ public class HeartCenter : MonoBehaviour
                 }
             }
             //Debug.Log("Player");
+
+
            
         }
         
