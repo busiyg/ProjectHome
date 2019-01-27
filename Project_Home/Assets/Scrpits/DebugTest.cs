@@ -29,7 +29,7 @@ public class DebugTest : MonoBehaviour {
             if (_target.GetComponent<HeartMonster>() != null) {
                 // GameManager.GetInstance().ShowdFinishBG();
                 //_target.GetComponent<HeartMonster>().StopAllCoroutines();
-                _target.GetComponent<HeartMonster>()._bloodNum = 0;
+               // _target.GetComponent<HeartMonster>(). = 0;
             }
         }
        
