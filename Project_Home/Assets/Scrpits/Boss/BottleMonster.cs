@@ -25,6 +25,9 @@ public class BottleMonster : MonoBehaviour
     public GameObject StartShootPos;
     public GameObject BottleButtlePrefab;
 
+    private int ShootCountDownTimer=0;
+    public int ShootCountDown;
+
     // Use this for initialization
     void Start ()
     {
@@ -115,17 +118,22 @@ public class BottleMonster : MonoBehaviour
 
     void Fire()
     {
-        Instantiate(BottleButtlePrefab,StartShootPos.transform.position,StartShootPos.transform.rotation);
-        Anim.SetTrigger("Rotate");
-        if (Anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f && Anim.GetCurrentAnimatorStateInfo(0).IsName("BottleRotate"))
-        {
-            _dizzyTime = 0;
-            Anim.SetBool("Fire", false);
-            Anim.ResetTrigger("Idle");
-            Anim.ResetTrigger("Rotate");
-            _isHurt=false;
-            CutAim();
+        if (ShootCountDownTimer >= ShootCountDown) {
+            ShootCountDownTimer = 0;
+        } else {
+            Instantiate(BottleButtlePrefab, StartShootPos.transform.position, StartShootPos.transform.rotation);
+            Anim.SetTrigger("Rotate");
+            if (Anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f && Anim.GetCurrentAnimatorStateInfo(0).IsName("BottleRotate")) {
+                _dizzyTime = 0;
+                Anim.SetBool("Fire", false);
+                Anim.ResetTrigger("Idle");
+                Anim.ResetTrigger("Rotate");
+                _isHurt = false;
+                CutAim();
+            }
+            ShootCountDownTimer += 1;
         }
+      
     }
 
     IEnumerator HurtCoroutine()

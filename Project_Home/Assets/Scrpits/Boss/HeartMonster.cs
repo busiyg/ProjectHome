@@ -8,10 +8,13 @@ public class HeartMonster : MonoBehaviour
     public GameObject Left;
     public GameObject Right;
     public GameObject Center;
+    public GameObject Hit;
     public float Speed;
     public float ShakeTime;
     public float XShakeWidth;
     public float YShakeWidth;
+
+    public List<GameObject> WaterList=new List<GameObject>();
 
     private string _stateName;
     private Transform _target;
@@ -58,14 +61,26 @@ public class HeartMonster : MonoBehaviour
 
         yield return new WaitForSeconds(1.1f);
 
-        Left.GetComponent<EdgeCollider2D>().enabled = true;
-        Right.GetComponent<EdgeCollider2D>().enabled = true;
+        //  Left.GetComponent<EdgeCollider2D>().enabled = true;
+        // Right.GetComponent<EdgeCollider2D>().enabled = true;
+        Hit.GetComponent<Collider2D>().enabled = true;
         Left.transform.DOLocalMoveX(-0.5f, 0.2f);
         Right.transform.DOLocalMoveX(0.7f, 0.2f);
 
+        if (WaterList.Count > 3) {
+            GameManager.GetInstance().ShowdFinishBG();
+            StopAllCoroutines();
+        } else {
+            foreach (var obj in WaterList) {
+                Destroy(obj.gameObject);
+            }
+            WaterList.Clear();
+        }
+
         yield return  new WaitForSeconds(1.0f);
-        Left.GetComponent<EdgeCollider2D>().enabled = false;
-        Right.GetComponent<EdgeCollider2D>().enabled = false;
+        Hit.GetComponent<Collider2D>().enabled = false;
+        // Left.GetComponent<EdgeCollider2D>().enabled = false;
+        // Right.GetComponent<EdgeCollider2D>().enabled = false;
         Left.transform.DOShakePosition(ShakeTime, new Vector2(XShakeWidth, YShakeWidth));
         Right.transform.DOShakePosition(ShakeTime, new Vector2(XShakeWidth, YShakeWidth));
         yield return new WaitForSeconds(ShakeTime);

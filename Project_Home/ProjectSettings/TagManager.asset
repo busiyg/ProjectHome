@@ -8,6 +8,8 @@ TagManager:
   - Boss
   - Thing
   - shitou
+  - Wall
+  - HeartWeak
   layers:
   - Default
   - TransparentFX

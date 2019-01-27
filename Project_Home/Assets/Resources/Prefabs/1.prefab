@@ -174,6 +174,8 @@ MonoBehaviour:
   StartShootPos: {fileID: 1333303648366762}
   BottleButtlePrefab: {fileID: 1820853267845350, guid: c5e9e781196200d47a022dafcdbdf1fd,
     type: 2}
+  ShootCountDownTimer: 0
+  ShootCountDown: 2
   DizzyIntervalTime: 2.5
 --- !u!212 &212218679828166212
 SpriteRenderer:
