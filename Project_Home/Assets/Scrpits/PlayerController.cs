@@ -22,9 +22,12 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate() {
         Move();
-        Shoot();
-        Roll();
-        Shock();
+        if (SceneName == "Game") {
+            Shoot();
+            Roll();
+            Shock();
+        }
+       
     }
 
     public void Shoot() {
@@ -62,7 +65,6 @@ public class PlayerController : MonoBehaviour {
     public void Roll() {
      
         if ((Input.GetAxis("Horizontal") !=0|| Input.GetAxis("Vertical") !=0)&& Input.GetKeyDown(KeyCode.Space)) {
-            print("roll!!!!!!   ");
             AudioManager.PlayAudioClip(2);
             float BeforeSpeed = SpeedScale;
             SpeedScale = SpeedScale * 3;
@@ -72,7 +74,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void ShootDir() {
-        if (SceneName == "Game") {
+        
             Vector3 MouseDownPos = Input.mousePosition;
             Vector3 Tar = Camera.main.ScreenToWorldPoint(MouseDownPos);
             float DisX = Tar.x - transform.position.x;
@@ -101,8 +103,6 @@ public class PlayerController : MonoBehaviour {
                     HeadAni.Play("HeadDown");
                 }
             }
-        }
-      
     }
 
     public void Move() {
