@@ -16,18 +16,22 @@ public class DebugTest : MonoBehaviour {
 
     public void KillBoss() {
         var _target = GameObject.FindWithTag("Boss").transform;
-        if (_target.GetComponent<BottleMonster>()!=null) {
-            _target.GetComponent<BottleMonster>()._bloodNum = 0;
-        }
 
-        if (_target.GetComponent<MouthEarMonster>() != null) {
-            _target.GetComponent<MouthEarMonster>()._bloodNum = 0;
-        }
+        if (_target!=null) {
+            if (_target.GetComponent<BottleMonster>() != null) {
+                _target.GetComponent<BottleMonster>()._bloodNum = 0;
+            }
 
-        if (_target.GetComponent<HeartMonster>() != null) {
-           // GameManager.GetInstance().ShowdFinishBG();
-           //_target.GetComponent<HeartMonster>().StopAllCoroutines();
-            _target.GetComponent<HeartMonster>()._bloodNum = 0;
+            if (_target.GetComponent<MouthEarMonster>() != null) {
+                _target.GetComponent<MouthEarMonster>()._bloodNum = 0;
+            }
+
+            if (_target.GetComponent<HeartMonster>() != null) {
+                // GameManager.GetInstance().ShowdFinishBG();
+                //_target.GetComponent<HeartMonster>().StopAllCoroutines();
+                _target.GetComponent<HeartMonster>()._bloodNum = 0;
+            }
         }
+       
     }
 }
