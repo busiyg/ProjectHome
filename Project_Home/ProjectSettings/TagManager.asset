@@ -11,6 +11,7 @@ TagManager:
   - Wall
   - HeartWeak
   - love
+  - water
   layers:
   - Default
   - TransparentFX
@@ -20,9 +21,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Heart
+  - Border
+  - Water
   - 
   - 
   - 
