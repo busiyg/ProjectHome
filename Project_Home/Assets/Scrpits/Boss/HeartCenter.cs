@@ -26,6 +26,7 @@ public class HeartCenter : MonoBehaviour
     {
         if (collider.tag.Equals("Player"))
         {
+            
             if (!IsClip)
             {
                 if (_inCenterTime < CenterClipTime)
