@@ -20,6 +20,11 @@ public class EarCollider : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
+        if (collider.tag.Equals("Player"))
+        {
+            GameManager.GetInstance().GameOver();
+        }
+
         //Debug.Log(collider);
         if (collider.tag.Equals("love"))
         {

@@ -35,6 +35,8 @@ public class HeartMonster : MonoBehaviour
 
 	    CutAim();
 	}
+
+    
 	
 	// Update is called once per frame
 	void Update ()

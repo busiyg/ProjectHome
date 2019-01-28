@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouthCollider : MonoBehaviour {
+public class BossBullet : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -14,17 +14,11 @@ public class MouthCollider : MonoBehaviour {
 		
 	}
 
-    void OnTriggerEnter2D(Collider2D collider)
+    void OnTriggerStay2D(Collider2D collider)
     {
-        //Debug.Log(collider);
         if (collider.tag.Equals("Player"))
         {
             GameManager.GetInstance().GameOver();
-        }
-        if (collider.tag.Equals("love"))
-        {
-            collider.gameObject.SetActive(false);
-            Debug.Log("打中嘴");
         }
     }
 }
