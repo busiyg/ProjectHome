@@ -4,3 +4,5 @@ Logs/
 obj/
 *.csproj
 *.sln
+Project_Home/BuildHome/
+*.zip
