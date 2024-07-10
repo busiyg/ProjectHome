@@ -1,22 +1,48 @@
 fileFormatVersion: 2
 guid: efbe7b0787747ad4494232b29c2c6694
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: "\u5FAE\u4FE1\u56FE\u7247_20190127142102_0"
-    21300002: "\u5FAE\u4FE1\u56FE\u7247_20190127142102_1"
-    21300004: "\u5FAE\u4FE1\u56FE\u7247_20190127142102_2"
-    21300006: "\u5FAE\u4FE1\u56FE\u7247_20190127142102_3"
-    21300008: "\u5FAE\u4FE1\u56FE\u7247_20190127142102_4"
-    21300010: "\u5FAE\u4FE1\u56FE\u7247_20190127142102_5"
-    21300012: "\u5FAE\u4FE1\u56FE\u7247_20190127142102_6"
-    21300014: "\u5FAE\u4FE1\u56FE\u7247_20190127142102_7"
-    21300016: "\u5FAE\u4FE1\u56FE\u7247_20190127142102_8"
-    21300018: "\u5FAE\u4FE1\u56FE\u7247_20190127142102_9"
-    21300020: "\u5FAE\u4FE1\u56FE\u7247_20190127142102_10"
-    21300022: "\u5FAE\u4FE1\u56FE\u7247_20190127142102_11"
-    21300024: "\u5FAE\u4FE1\u56FE\u7247_20190127142102_12"
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: "\u5FAE\u4FE1\u56FE\u7247_20190127142102_0"
+  - first:
+      213: 21300002
+    second: "\u5FAE\u4FE1\u56FE\u7247_20190127142102_1"
+  - first:
+      213: 21300004
+    second: "\u5FAE\u4FE1\u56FE\u7247_20190127142102_2"
+  - first:
+      213: 21300006
+    second: "\u5FAE\u4FE1\u56FE\u7247_20190127142102_3"
+  - first:
+      213: 21300008
+    second: "\u5FAE\u4FE1\u56FE\u7247_20190127142102_4"
+  - first:
+      213: 21300010
+    second: "\u5FAE\u4FE1\u56FE\u7247_20190127142102_5"
+  - first:
+      213: 21300012
+    second: "\u5FAE\u4FE1\u56FE\u7247_20190127142102_6"
+  - first:
+      213: 21300014
+    second: "\u5FAE\u4FE1\u56FE\u7247_20190127142102_7"
+  - first:
+      213: 21300016
+    second: "\u5FAE\u4FE1\u56FE\u7247_20190127142102_8"
+  - first:
+      213: 21300018
+    second: "\u5FAE\u4FE1\u56FE\u7247_20190127142102_9"
+  - first:
+      213: 21300020
+    second: "\u5FAE\u4FE1\u56FE\u7247_20190127142102_10"
+  - first:
+      213: 21300022
+    second: "\u5FAE\u4FE1\u56FE\u7247_20190127142102_11"
+  - first:
+      213: 21300024
+    second: "\u5FAE\u4FE1\u56FE\u7247_20190127142102_12"
   externalObjects: {}
-  serializedVersion: 7
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -33,9 +59,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -44,9 +73,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -67,11 +96,17 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
-  - serializedVersion: 2
+  - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -81,8 +116,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -92,8 +129,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -103,7 +142,9 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -123,6 +164,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: b0b21da16c8e98f46b1eac0692126ebb
+      internalID: 21300000
       vertices: []
       indices: 
       edges: []
@@ -143,6 +185,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 293fd2884f1cf4547a052a212d709118
+      internalID: 21300002
       vertices: []
       indices: 
       edges: []
@@ -163,6 +206,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: efc3ed322f891c9449ca334b0509b140
+      internalID: 21300004
       vertices: []
       indices: 
       edges: []
@@ -183,6 +227,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 55116030b3ae4a94dab9eba5a2bce725
+      internalID: 21300006
       vertices: []
       indices: 
       edges: []
@@ -203,6 +248,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 3f36f7543bad0674a83f2d74aa3e32e5
+      internalID: 21300008
       vertices: []
       indices: 
       edges: []
@@ -223,6 +269,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 3664011d429379845a57ff7d406dd489
+      internalID: 21300010
       vertices: []
       indices: 
       edges: []
@@ -243,6 +290,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 068f10e559796554fb5cb4d8d7c63db0
+      internalID: 21300012
       vertices: []
       indices: 
       edges: []
@@ -263,6 +311,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: abbd1828ce387104290ed51d6a00b4c3
+      internalID: 21300014
       vertices: []
       indices: 
       edges: []
@@ -283,6 +332,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 79aa726521bcb8b44b02db21e7b83e42
+      internalID: 21300016
       vertices: []
       indices: 
       edges: []
@@ -303,6 +353,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 83ff2eb123f4a6449894b98bd5b43db7
+      internalID: 21300018
       vertices: []
       indices: 
       edges: []
@@ -323,6 +374,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 5362a9fac27b81341a0ed99295f678b9
+      internalID: 21300020
       vertices: []
       indices: 
       edges: []
@@ -343,6 +395,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 55c9ed79d9468004a97598f6ead953ee
+      internalID: 21300022
       vertices: []
       indices: 
       edges: []
@@ -363,6 +416,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 0a3b0803f940c6f4698efd1c94143ff0
+      internalID: 21300024
       vertices: []
       indices: 
       edges: []
@@ -371,13 +425,28 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e851f1bf8367a141ace864070450ece
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
-  spritePackingTag: 
+    secondaryTextures: []
+    nameFileIdTable:
+      "\u5FAE\u4FE1\u56FE\u7247_20190127142102_0": 21300000
+      "\u5FAE\u4FE1\u56FE\u7247_20190127142102_1": 21300002
+      "\u5FAE\u4FE1\u56FE\u7247_20190127142102_10": 21300020
+      "\u5FAE\u4FE1\u56FE\u7247_20190127142102_11": 21300022
+      "\u5FAE\u4FE1\u56FE\u7247_20190127142102_12": 21300024
+      "\u5FAE\u4FE1\u56FE\u7247_20190127142102_2": 21300004
+      "\u5FAE\u4FE1\u56FE\u7247_20190127142102_3": 21300006
+      "\u5FAE\u4FE1\u56FE\u7247_20190127142102_4": 21300008
+      "\u5FAE\u4FE1\u56FE\u7247_20190127142102_5": 21300010
+      "\u5FAE\u4FE1\u56FE\u7247_20190127142102_6": 21300012
+      "\u5FAE\u4FE1\u56FE\u7247_20190127142102_7": 21300014
+      "\u5FAE\u4FE1\u56FE\u7247_20190127142102_8": 21300016
+      "\u5FAE\u4FE1\u56FE\u7247_20190127142102_9": 21300018
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

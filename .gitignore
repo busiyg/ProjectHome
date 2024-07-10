@@ -1,6 +1,6 @@
-Project_Home/Library/
-Project_Home/ProjectSettings/
-Project_Home/Temp/UnityLockfile/
-Project_Home/obj/
-Project_Home/.vs/
-Project_Home/Temp/
+.vs/
+Library/
+Logs/
+obj/
+*.csproj
+*.sln

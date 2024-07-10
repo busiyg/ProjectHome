@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
-[RequireComponent(typeof(GUIText))]
+[RequireComponent(typeof(Text))]
 public class UbhAutoScaleGUIText : MonoBehaviour
 {
-    GUIText _GuiText;
+    Text _GuiText;
     float _OrgFontSize;
 
     void Awake ()
     {
-        _GuiText = GetComponent<GUIText>();
+        _GuiText = GetComponent<Text>();
         _OrgFontSize = _GuiText.fontSize;
     }
 

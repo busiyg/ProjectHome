@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class UbhScore : UbhMonoBehaviour
 {
@@ -8,9 +9,9 @@ public class UbhScore : UbhMonoBehaviour
     [SerializeField]
     bool _DeleteScore;
     [SerializeField]
-    GUIText _ScoreGUIText;
+    Text _ScoreGUIText;
     [SerializeField]
-    GUIText _HighScoreGUIText;
+    Text _HighScoreGUIText;
     int _Score;
     int _HighScore;
 

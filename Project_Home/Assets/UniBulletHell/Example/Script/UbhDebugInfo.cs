@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class UbhDebugInfo : UbhMonoBehaviour
 {
     const float INTERVAL_SEC = 1f;
     [SerializeField]
-    GUIText _FpsGUIText;
+    Text _FpsGUIText;
     [SerializeField]
-    GUIText _BulletNumGUIText;
+    Text _BulletNumGUIText;
     UbhObjectPool objectPool;
     float _LastUpdateTime;
     int _Frame = 0;
